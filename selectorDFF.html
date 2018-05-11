@@ -1,0 +1,193 @@
+<html lang="ja">
+<head>
+	<meta charset="utf-8">
+	<title>DFFキャラ抽選ツール（簡易版）</title>
+</head>
+<body>
+	<!-- タイプ毎の一括チェック -->
+	<input type="button" style="width:100; margin: 5px 4px;" value="SPEED ON" onclick="setCheck('speed');">
+	<input type="button" style="width:100; margin: 5px 4px;" value="SPEED OFF" onclick="setCheck('nospeed');">
+	<br>
+	<input type="button" style="width:100; margin: 5px 4px;" value="HEAVY ON" onclick="setCheck('heavy');">
+	<input type="button" style="width:100; margin: 5px 4px;" value="HEAVY OFF" onclick="setCheck('noheavy');">
+	<br>
+	<input type="button" style="width:100; margin: 5px 4px;" value="SHOOT ON" onclick="setCheck('shoot');">
+	<input type="button" style="width:100; margin: 5px 4px;" value="SHOOT OFF" onclick="setCheck('noshoot');">
+	<br>
+	<input type="button" style="width:100; margin: 5px 4px;" value="UNIQUE ON" onclick="setCheck('unique');">
+	<input type="button" style="width:100; margin: 5px 4px;" value="UNIQUE OFF" onclick="setCheck('nounique');">
+	<br>
+	<input type="button" style="width:100; margin: 5px 4px;" value="ALL ON" onclick="setCheck('speed'); setCheck('heavy'); setCheck('shoot'); setCheck('unique');">
+	<input type="button" style="width:100; margin: 5px 4px;" value="ALL OFF" onclick="setCheck('nospeed'); setCheck('noheavy'); setCheck('noshoot'); setCheck('nounique');">
+	<br>
+	
+	<!-- 抽選実行ボタン -->
+	<input type="button" style="width:216;" value="抽選" onclick="getRadioValue();">
+	<br>
+	<br>
+	<!-- キャラ選択テーブルStart -->
+	<table border="1">
+		<tr>
+			<th>name</th>
+			<th>yes</th>
+			<th>no</th>
+		</tr>
+		<tr>
+			<td><label>ウォーリア・オブ・ライト</label></td>
+			<td><label><input class="heavy" type="radio" name="grp1" value="ウォーリア・オブ・ライト"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp1" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ガーランド</label></td>
+			<td><label><input class="heavy" type="radio" name="grp2" value="ガーランド"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp2" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>フリオニール</label></td>
+			<td><label><input class="heavy" type="radio" name="grp3" value="フリオニール"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp3" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>皇帝</label></td>
+			<td><label><input class="shoot" type="radio" name="grp4" value="皇帝"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp4" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>オニオンナイト</label></td>
+			<td><label><input class="unique" type="radio" name="grp5" value="オニオンナイト"></label></td>
+			<td><label><input class="nounique" type="radio" name="grp5" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>暗闇の雲</label></td>
+			<td><label><input class="heavy" type="radio" name="grp6" value="暗闇の雲"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp6" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>セシル</label></td>
+			<td><label><input class="heavy" type="radio" name="grp7" value="セシル"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp7" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>カイン</label></td>
+			<td><label><input class="speed" type="radio" name="grp8" value="カイン"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp8" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ゴルベーザ</label></td>
+			<td><label><input class="shoot" type="radio" name="grp9" value="ゴルベーザ"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp9" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>バッツ</label></td>
+			<td><label><input class="unique" type="radio" name="grp10" value="バッツ"></label></td>
+			<td><label><input class="nounique" type="radio" name="grp10" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>エクスデス</label></td>
+			<td><label><input class="unique" type="radio" name="grp11" value="エクスデス"></label></td>
+			<td><label><input class="nounique" type="radio" name="grp11" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ティナ</label></td>
+			<td><label><input class="shoot" type="radio" name="grp12" value="ティナ"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp12" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ケフカ</label></td>
+			<td><label><input class="shoot" type="radio" name="grp13" value="ケフカ"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp13" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>クラウド</label></td>
+			<td><label><input class="heavy" type="radio" name="grp14" value="クラウド"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp14" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>セフィロス</label></td>
+			<td><label><input class="heavy" type="radio" name="grp15" value="セフィロス"></label></td>
+			<td><label><input class="noheavy" type="radio" name="grp15" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>スコール</label></td>
+			<td><label><input class="speed" type="radio" name="grp16" value="スコール"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp16" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>アルティミシア</label></td>
+			<td><label><input class="shoot" type="radio" name="grp17" value="アルティミシア"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp17" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ジタン</label></td>
+			<td><label><input class="speed" type="radio" name="grp18" value="ジタン"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp18" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>クジャ</label></td>
+			<td><label><input class="speed" type="radio" name="grp19" value="クジャ"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp19" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ティーダ</label></td>
+			<td><label><input class="speed" type="radio" name="grp20" value="ティーダ"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp20" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ジェクト</label></td>
+			<td><label><input class="speed" type="radio" name="grp21" value="ジェクト"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp21" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>シャントット</label></td>
+			<td><label><input class="shoot" type="radio" name="grp22" value="シャントット"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp22" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ヴァン</label></td>
+			<td><label><input class="unique" type="radio" name="grp23" value="ヴァン"></label></td>
+			<td><label><input class="nounique" type="radio" name="grp23" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ライトニング</label></td>
+			<td><label><input class="speed" type="radio" name="grp24" value="ライトニング"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp24" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ヤ･シュトラ</label></td>
+			<td><label><input class="shoot" type="radio" name="grp25" value="ヤ･シュトラ"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp25" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ノクティス</label></td>
+			<td><label><input class="speed" type="radio" name="grp26" value="ノクティス"></label></td>
+			<td><label><input class="nospeed" type="radio" name="grp26" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>ラムザ</label></td>
+			<td><label><input class="unique" type="radio" name="grp27" value="ラムザ"></label></td>
+			<td><label><input class="nounique" type="radio" name="grp27" value="0" checked></label></td>
+		</tr>
+		<tr>
+			<td><label>エース</label></td>
+			<td><label><input class="shoot" type="radio" name="grp28" value="エース"></label></td>
+			<td><label><input class="noshoot" type="radio" name="grp28" value="0" checked></label></td>
+		</tr>
+		<!-- 雛形 ここから
+			<tr>
+				<td><label>（キャラ名）</label></td>
+				<td><label><input class="（タイプ名）" type="radio" name="grp（連番）" value="（キャラ名）"></label></td>
+				<td><label><input class="no（タイプ名）" type="radio" name="grp（連番）" value="0" checked></label></td>
+			</tr>
+		雛形 ここまで -->
+
+	</table>
+	<!-- キャラ選択テーブルEnd -->
+	<br>
+	
+	<!-- 抽選実行ボタン -->
+	<input type="button" style="width:216;" value="抽選" onclick="getRadioValue();">
+
+	<!-- 呼び出し資産 -->
+	<script type="text/javascript" src="./js/common.js"></script>
+</body>
+</html>
